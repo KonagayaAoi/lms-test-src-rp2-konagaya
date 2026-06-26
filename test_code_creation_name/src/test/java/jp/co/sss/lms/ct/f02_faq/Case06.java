@@ -165,8 +165,9 @@ public class Case06 {
 		// 3. クリックした質問のすぐ下にある回答部分を取得
 		WebElement answerDd = questionDt.findElement(By.xpath("./following-sibling::dd"));
 
-		// 期待値の検証：回答の要素が画面上に表示されていること
-		assertTrue(answerDd.isDisplayed(), "回答が表示されていません");
+		// 期待値の検証：回答のテキストが指定した文言と完全に一致すること
+		String expectedText = "A. 受講者の退職や解雇等、やむを得ない事情による途中終了に関してなど、事情をお伺いした上で、協議という形を取らせて頂きます。 弊社営業担当までご相談下さい。";
+		assertEquals(expectedText, answerDd.getText(), "表示された回答のテキストが期待値と一致しません");
 
 		getEvidence(new Object() {
 		});
